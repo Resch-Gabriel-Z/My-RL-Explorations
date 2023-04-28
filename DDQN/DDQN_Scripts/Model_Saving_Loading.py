@@ -3,7 +3,8 @@ import os
 import torch
 
 
-def load_model_dict(path, name, policy_net, online_net,optimizer,starting_point, episode_reward_tracker, total_steps, memory):
+def load_model_dict(path, name, policy_net, online_net, optimizer, starting_point, episode_reward_tracker, total_steps,
+                    memory):
     """
     A Method that loads certain variables I decided to be valuable from a dictionary.
     Args:
@@ -38,7 +39,8 @@ def load_model_dict(path, name, policy_net, online_net,optimizer,starting_point,
     return starting_point, episode_reward_tracker, total_steps, memory
 
 
-def save_model_dict(path, name, policy_net, online_net,optimizer,starting_point, episode_reward_tracker, total_steps, memory):
+def save_model_dict(path, name, policy_net, online_net, optimizer, starting_point, episode_reward_tracker, total_steps,
+                    memory):
     """
     A simple method to save the model after an episode
     Args:

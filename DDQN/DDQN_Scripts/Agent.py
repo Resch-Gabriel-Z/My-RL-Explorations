@@ -3,6 +3,7 @@ import random
 import numpy as np
 import torch
 import torch.nn as nn
+
 from Neural_Network import DQN
 
 
@@ -11,6 +12,7 @@ class Agent(nn.Module):
     The Agent class it will be responsible for acting in the environment (including returning information and handle
     exploration)
     """
+
     def __init__(self, initial_eps, final_eps, eps_decay_steps, in_channels, num_actions):
         """
         A simple initialization of important parameters

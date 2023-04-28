@@ -1,4 +1,5 @@
 import os
+
 import gym
 import torch
 
@@ -30,7 +31,7 @@ if os.path.exists(path + '/' + name):
 
         if done:
             number_of_episodes_playing -= 1
-            print(f'{"~"*50}\n'
+            print(f'{"~" * 50}\n'
                   f'Episode: {100 - number_of_episodes_playing}\n'
                   f'reward: {episode_reward}\n')
             episode_reward = 0
