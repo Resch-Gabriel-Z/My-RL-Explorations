@@ -5,16 +5,16 @@ import torch
 
 from Agent import Agent
 
-game_name = 'CartPole-v1'
+game_name = '-'
 env = gym.make(game_name, render_mode='human')
 
 path = '/home/gabe/PycharmProjects/RL-Stuff/DDQN/DDQN_trained_model/'
-name = 'CartPole' + '_final.pt'
+name = '-'
 
 number_of_episodes_playing = 100
 episode_reward = 0
 # Load the final model
-if os.path.exists(path + '/' + name):
+if os.path.exists(f'{path}/{name}_final.pt'):
     agent = Agent(0.1, 0.1, 0, in_channels=env.observation_space.shape[0], num_actions=env.action_space.n)
     agent.policy_net.load_state_dict(
         torch.load(path + '/' + name))

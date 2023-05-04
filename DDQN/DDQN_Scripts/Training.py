@@ -1,4 +1,4 @@
-import gymnasium
+import gym
 import numpy as np
 import pandas as pd
 import torch
@@ -13,17 +13,20 @@ from Neural_Network import DQN
 from Replay_Memory import ReplayMemory
 
 NUMBER_OF_LOG_MESSAGES = 100
+NUMBER_OF_CHECKPOINTS = 100
 
 # Hyperparameters for the agent
 agent_hyperparameters = [hyperparameters['initial_eps'], hyperparameters['final_eps'],
                          hyperparameters['eps_decay_steps']]
 
 # Create the environment
-env = gymnasium.make("Acrobot-v1", render_mode='rgb_array')
+env = gym.make("-", render_mode='rgb_array')
 
 # Create the meta data
-game_name = 'Acrobot'
+game_name = '-'
 path_to_model_save = '/home/gabe/PycharmProjects/RL-Stuff/DDQN/DDQN_model_savestate'
+name_final_model = f'{game_name}_final'
+path_to_final_model = '/home/gabe/PycharmProjects/RL-Stuff/DDQN/DDQN_trained_model'
 
 # Create the Agent and the online Network
 agent = Agent(*agent_hyperparameters, in_channels=int(np.prod(env.observation_space.shape)),
@@ -90,9 +93,10 @@ for episode in tqdm(range(start, hyperparameters['number_of_episodes'])):
             online_net.load_state_dict(agent.policy_net.state_dict())
 
     # Save the Model
-    save_model_dict(path=path_to_model_save, name=game_name, policy_net=agent.policy_net,
-                    online_net=online_net, optimizer=optimizer, starting_point=episode,
-                    total_steps=total_steps, memory=memory, episode_reward_tracker=episode_reward_tracker)
+    if episode % (hyperparameters['number_of_episodes'] / NUMBER_OF_CHECKPOINTS) == 0:
+        save_model_dict(path=path_to_model_save, name=game_name, policy_net=agent.policy_net,
+                        online_net=online_net, optimizer=optimizer, starting_point=episode,
+                        total_steps=total_steps, memory=memory, episode_reward_tracker=episode_reward_tracker)
 
     # Print out useful information during Training
     if episode % (hyperparameters['number_of_episodes'] / NUMBER_OF_LOG_MESSAGES) == 0:
@@ -105,8 +109,6 @@ for episode in tqdm(range(start, hyperparameters['number_of_episodes'])):
               f'{"~" * 40}')
 
 # After training, save the models parameters
-name_final_model = game_name + '_final'
-path_to_final_model = '/home/gabe/PycharmProjects/RL-Stuff/DDQN/DDQN_trained_model'
 save_final_model(name=name_final_model, path=path_to_final_model, model=agent.policy_net)
 df = pd.DataFrame({'cumulative rewards': episode_reward_tracker})
 df.to_csv(f'/home/gabe/PycharmProjects/RL-Stuff/DDQN/media/{game_name}.csv')

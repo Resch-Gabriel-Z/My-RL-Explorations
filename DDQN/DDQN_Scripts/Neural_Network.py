@@ -16,10 +16,10 @@ class DQN(nn.Module):
         super(DQN, self).__init__()
         self.fc = nn.Sequential(
             nn.Linear(in_features=in_channels, out_features=128),
-            nn.Tanh(),
+            nn.ReLU(),
 
             nn.Linear(in_features=128, out_features=128),
-            nn.Tanh(),
+            nn.ReLU(),
 
             nn.Linear(in_features=128, out_features=num_actions),
         )

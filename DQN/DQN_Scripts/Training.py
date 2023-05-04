@@ -1,4 +1,4 @@
-import gymnasium
+import gym
 import numpy as np
 import pandas as pd
 import torch
@@ -18,11 +18,13 @@ agent_hyperparameters = [hyperparameters['initial_eps'], hyperparameters['final_
                          hyperparameters['eps_decay_steps']]
 
 # Create the environment
-env = gymnasium.make("Acrobot-v1", render_mode='rgb_array')
+env = gym.make("-", render_mode='rgb_array')
 
 # Create the meta data
-game_name = 'Acrobot'
+game_name = '-'
 path_to_model_save = '/home/gabe/PycharmProjects/RL-Stuff/DQN/DQN_model_savestate'
+name_final_model = f'{game_name}_final'
+path_to_final_model = '/home/gabe/PycharmProjects/RL-Stuff/DQN/DQN_trained_model'
 
 # Create the Agent
 agent = Agent(*agent_hyperparameters, in_channels=int(np.prod(env.observation_space.shape)),
@@ -95,8 +97,6 @@ for episode in tqdm(range(start, hyperparameters['number_of_episodes'])):
               f'{"~" * 40}')
 
 # After training, save the models parameters
-name_final_model = game_name + '_final'
-path_to_final_model = '/home/gabe/PycharmProjects/RL-Stuff/DQN/DQN_trained_model'
 save_final_model(name=name_final_model, path=path_to_final_model, model=agent.policy_net)
 df = pd.DataFrame({'cumulative rewards': episode_reward_tracker})
 df.to_csv(f'/home/gabe/PycharmProjects/RL-Stuff/DQN/media/{game_name}.csv')
