@@ -24,9 +24,9 @@ env = gym.make("-", render_mode='rgb_array')
 
 # Create the meta data
 game_name = '-'
-path_to_model_save = '/home/gabe/PycharmProjects/RL-Stuff/DDQN/DDQN_model_savestate'
+path_to_model_save = '-'
 name_final_model = f'{game_name}_final'
-path_to_final_model = '/home/gabe/PycharmProjects/RL-Stuff/DDQN/DDQN_trained_model'
+path_to_final_model = '-'
 
 # Create the Agent and the online Network
 agent = Agent(*agent_hyperparameters, in_channels=int(np.prod(env.observation_space.shape)),
@@ -111,4 +111,5 @@ for episode in tqdm(range(start, hyperparameters['number_of_episodes'])):
 # After training, save the models parameters
 save_final_model(name=name_final_model, path=path_to_final_model, model=agent.policy_net)
 df = pd.DataFrame({'cumulative rewards': episode_reward_tracker})
-df.to_csv(f'/home/gabe/PycharmProjects/RL-Stuff/DDQN/media/{game_name}.csv')
+df.to_csv(f'-/{game_name}.csv')
+

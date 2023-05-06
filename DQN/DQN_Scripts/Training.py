@@ -12,6 +12,7 @@ from Model_Saving_Loading import load_model_dict, save_model_dict, save_final_mo
 from Replay_Memory import ReplayMemory
 
 NUMBER_OF_LOG_MESSAGES = 100
+NUMBER_OF_CHECKPOINTS = 100
 
 # Hyperparameters for the agent
 agent_hyperparameters = [hyperparameters['initial_eps'], hyperparameters['final_eps'],
@@ -22,9 +23,9 @@ env = gym.make("-", render_mode='rgb_array')
 
 # Create the meta data
 game_name = '-'
-path_to_model_save = '/home/gabe/PycharmProjects/RL-Stuff/DQN/DQN_model_savestate'
+path_to_model_save = '-'
 name_final_model = f'{game_name}_final'
-path_to_final_model = '/home/gabe/PycharmProjects/RL-Stuff/DQN/DQN_trained_model'
+path_to_final_model = '-'
 
 # Create the Agent
 agent = Agent(*agent_hyperparameters, in_channels=int(np.prod(env.observation_space.shape)),
@@ -82,9 +83,10 @@ for episode in tqdm(range(start, hyperparameters['number_of_episodes'])):
             break
 
     # Save the Model
-    save_model_dict(path=path_to_model_save, name=game_name, policy_net=agent.policy_net,
-                    optimizer=optimizer, starting_point=episode,
-                    total_steps=total_steps, memory=memory, episode_reward_tracker=episode_reward_tracker)
+    if episode % (hyperparameters['number_of_episodes'] / NUMBER_OF_CHECKPOINTS) == 0:
+        save_model_dict(path=path_to_model_save, name=game_name, policy_net=agent.policy_net,
+                        optimizer=optimizer, starting_point=episode,
+                        total_steps=total_steps, memory=memory, episode_reward_tracker=episode_reward_tracker)
 
     # Print out useful information during Training
     if episode % (hyperparameters['number_of_episodes'] / NUMBER_OF_LOG_MESSAGES) == 0:
@@ -99,4 +101,4 @@ for episode in tqdm(range(start, hyperparameters['number_of_episodes'])):
 # After training, save the models parameters
 save_final_model(name=name_final_model, path=path_to_final_model, model=agent.policy_net)
 df = pd.DataFrame({'cumulative rewards': episode_reward_tracker})
-df.to_csv(f'/home/gabe/PycharmProjects/RL-Stuff/DQN/media/{game_name}.csv')
+df.to_csv(f'-/{game_name}.csv')
