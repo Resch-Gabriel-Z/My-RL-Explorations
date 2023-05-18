@@ -1,6 +1,6 @@
 # My Reinforcement Learning Explorations
 
----
+
 
 This repository contains a collection of reinforcement learning algorithms implemented in Python. Each algorithm is implemented by several scripts, set apart by their purpose, accompanied by trained models and media (such as gifs and pictures) to demonstrate the Results.
 
@@ -8,7 +8,7 @@ This repository contains a collection of reinforcement learning algorithms imple
 
 # Introduction
 
----
+
 
 In this repository, I explore various reinforcement learning algorithms and provide their implementations for educational purposes. The primary goal is to create clean and easily understandable code that might help others as well.
 
@@ -23,7 +23,7 @@ Which is essentially a function that estimates cumulative rewards, for taking a 
 - DQN: The Core Idea of this algorithm builds upon Q-Learning, but it uses Deep Neural Networks and a Memory to learn the optimal Q-Values off-policy
 - DDQN: the Double Deep Q-Learning Network is similiar to DQN, but it uses a secondary Network to stabilize the Results.
 
----
+
 
 ## Policy-Gradient
 
@@ -35,7 +35,7 @@ Algorithms that belongs to PG typically choose their action therefore not from t
 
 # Installation & Usage
 
----
+
 
 Feel free to download this repository and change it however you want, I didn't try to make a software out of it that requires special UI, or something like that. 
 
@@ -52,7 +52,7 @@ git clone https://github.com/Resch-Gabriel-Z/My-RL-Explorations
 
 # Results
 
----
+
 
 ## Value-based approach
 
