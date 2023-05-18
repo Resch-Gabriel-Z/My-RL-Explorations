@@ -1,15 +1,18 @@
 import gym
 from Q_Learner import QLearner
 from Hyperparameters import hyperparameters
-import numpy as np
 import pandas as pd
 from tqdm import tqdm
-from gym.envs.toy_text.frozen_lake import generate_random_map
+
 
 NUMBER_OF_LOG_MESSAGES = 100
 
 # create the environment
-env = gym.make('Taxi-v3')
+env = gym.make('-')
+
+# Create the meta_data
+game_name = '-'
+path_to_final_model = '-'
 
 # get the dimensions for the Q-Table
 action_space_size = env.action_space.n
@@ -21,9 +24,8 @@ agent_hyperparameters = [hyperparameters['initial_eps'], hyperparameters['final_
 
 agent = QLearner(*agent_hyperparameters, action_space=action_space_size, obs_space=observation_space_size)
 
-# Create the meta_data
+
 total_steps = 0
-game_name = 'Taxi'
 
 for episode in tqdm(range(hyperparameters['number_of_episodes'])):
     state, _ = env.reset()
@@ -53,10 +55,10 @@ for episode in tqdm(range(hyperparameters['number_of_episodes'])):
         print(f'\n'
               f'{"~" * 50}\n'
               f'Episode: {episode}\n'
-              f'Win Rate: {sum(agent.reward_all_episodes)/(len(agent.reward_all_episodes)+1)}\n'
+              f'Win Rate: {sum(agent.reward_all_episodes) / (len(agent.reward_all_episodes) + 1)}\n'
               f'total steps done: {total_steps}\n'
               f'{"~" * 50}')
 
 # save final q_table and csv of rewards
-pd.DataFrame({'cumulative rewards': agent.reward_all_episodes}).to_csv(f'media/{game_name}.csv')
-pd.DataFrame(agent.q_table).to_csv(f'Q_Learning_trained_model/{game_name}_qtable.csv')
+pd.DataFrame({'cumulative rewards': agent.reward_all_episodes}).to_csv(f'-/{game_name}.csv')
+pd.DataFrame(agent.q_table).to_csv(f'{path_to_final_model}/{game_name}_qtable.csv')
