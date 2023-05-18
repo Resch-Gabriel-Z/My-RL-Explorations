@@ -60,6 +60,7 @@ git clone https://github.com/Resch-Gabriel-Z/My-RL-Explorations
 ![CliffWalking.png](Q-Learning%2Fmedia%2FCliffWalking.png)
 ![FrozenLake.png](Q-Learning%2Fmedia%2FFrozenLake.png)
 ![Taxi.png](Q-Learning%2Fmedia%2FTaxi.png)
+
 ### DQN
 ![Acrobot.png](DQN%2Fmedia%2FAcrobot.png)
 ![CartPole.png](DQN%2Fmedia%2FCartPole.png)
