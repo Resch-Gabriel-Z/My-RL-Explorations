@@ -57,10 +57,19 @@ git clone https://github.com/Resch-Gabriel-Z/My-RL-Explorations
 ## Value-based approach
 
 ### Q-Learning
-
+![CliffWalking.png](Q-Learning%2Fmedia%2FCliffWalking.png)
+![FrozenLake.png](Q-Learning%2Fmedia%2FFrozenLake.png)
+![Taxi.png](Q-Learning%2Fmedia%2FTaxi.png)
 ### DQN
-
+![Acrobot.png](DQN%2Fmedia%2FAcrobot.png)
+![CartPole.png](DQN%2Fmedia%2FCartPole.png)
+![LunarLander.png](DQN%2Fmedia%2FLunarLander.png)
+![MountainCar.png](DQN%2Fmedia%2FMountainCar.png)
 ### DDQN
+![Acrobot.png](DDQN%2Fmedia%2FAcrobot.png)
+![CartPole.png](DDQN%2Fmedia%2FCartPole.png)
+![LunarLander.png](DDQN%2Fmedia%2FLunarLander.png)
+![MountainCar.png](DDQN%2Fmedia%2FMountainCar.png)
 
 ## Policy Gradient
 
