@@ -2,9 +2,12 @@ import gym
 import numpy as np
 import pandas as pd
 
+# The game name is the name that the make function requires, it can be looked up on the documentation for the game
 game_name = '-'
 env = gym.make(game_name, render_mode='human')
 
+# The path of the model is the folder you saved your model in.
+# The name of the environment is simply the name you gave the trained model.
 path_of_model = '-'
 name_of_environment = '-'
 

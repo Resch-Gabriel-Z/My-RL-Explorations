@@ -22,11 +22,16 @@ agent_hyperparameters = [hyperparameters['initial_eps'], hyperparameters['final_
 # Create the environment
 env = gym.make("-", render_mode='rgb_array')
 
-# Create the meta data
+# Create the metadata
+# the game name is the name of the file you want to give your model
+# The path for the model save is the path you save your model in, while training, and the path for the final model is
+# the path you want to save your trained model in
+# The media path is the path you want to save the csv with the cumulative rewards in
 game_name = '-'
 path_to_model_save = '-'
 name_final_model = f'{game_name}_final'
 path_to_final_model = '-'
+media_path = '-'
 
 # Create the Agent and the online Network
 agent = Agent(*agent_hyperparameters, in_channels=int(np.prod(env.observation_space.shape)),
@@ -111,5 +116,4 @@ for episode in tqdm(range(start, hyperparameters['number_of_episodes'])):
 # After training, save the models parameters
 save_final_model(name=name_final_model, path=path_to_final_model, model=agent.policy_net)
 df = pd.DataFrame({'cumulative rewards': episode_reward_tracker})
-df.to_csv(f'-/{game_name}.csv')
-
+df.to_csv(f'{media_path}/{game_name}.csv')
