@@ -77,3 +77,9 @@ git clone https://github.com/Resch-Gabriel-Z/My-RL-Explorations
 
 ## Policy Gradient
 
+## VPG
+
+![Acrobot.png](VPG%2Fmedia%2FAcrobot.png)
+![CartPole.png](VPG%2Fmedia%2FCartPole.png)
+![Pendulum.png](VPG%2Fmedia%2FPendulum.png)
+
