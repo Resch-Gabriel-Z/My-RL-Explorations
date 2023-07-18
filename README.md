@@ -34,6 +34,14 @@ Algorithms that belongs to PG typically choose their action therefore not from t
 create, but from the Policy directly, by creating a Probability Distribution that chooses the best action with high
 probability.
 
+- VPG: or REINFORCE, is the start-point for many people who want to learn Policy Gradient. It uses a Probability
+  Distribution, that is shaped by the Network, to select an action in the environment. With the formula by the policy
+  gradient theorem, we update the Network such that the shape of the Probability distribution will get high cumulative
+  rewards.
+- PPO-Clip: in PPO-Clip (in this implementation with an Actor-Critic Model) we act similar to VPG but also include a
+  clip such that the updated Network will not differ to much from the original Network which should result in a more
+  stable Network.
+
 # Installation & Usage
 
 Feel free to download this repository and change it however you want, I didn't try to make a software out of it that
@@ -82,4 +90,7 @@ git clone https://github.com/Resch-Gabriel-Z/My-RL-Explorations
 ![Acrobot.png](VPG%2Fmedia%2FAcrobot.png)
 ![CartPole.png](VPG%2Fmedia%2FCartPole.png)
 ![Pendulum.png](VPG%2Fmedia%2FPendulum.png)
+
+## PPO Clip
+![CartPole.png](PPOCLIP%2Fmedia%2FCartPole.png)
 
